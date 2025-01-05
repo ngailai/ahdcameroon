@@ -1,4 +1,5 @@
-import {Facebook, Instagram} from 'lucide-react';
+import {Facebook, Instagram, Linkedin, X, Youtube} from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 import {Image} from '@nextui-org/react';
@@ -103,19 +104,68 @@ const OurStories = () => {
                         Don&apos;t miss out! Follow us for the latest news and
                         offers.
                     </p>
-                    <div className='text-white flex items-center gap-2 my-2'>
-                        <Facebook
+                    <div className='flex items-center gap-2 my-2 bg-white rounded-full p-4 text-teal-600'>
+                        <Link
+                            href='https://www.linkedin.com/in/ahd-cameroon-2b9a3024b/'
+                            target='_blank'
+                            className='cursor-pointer hover:text-teal-600'
+                        >
+                            {' '}
+                            <Linkedin
+                                size={25}
+                                className='cursor-pointer hover:text-teal-600'
+                            />
+                        </Link>
+                        <Link
+                            href='https://www.facebook.com/ahdcameroon'
+                            className='cursor-pointer hover:text-teal-600'
+                            target='_blank'
+                        >
+                            {' '}
+                            <Facebook
+                                size={25}
+                                className='cursor-pointer hover:text-teal-600'
+                            />
+                        </Link>
+                        <Link
+                            href='https://www.youtube.com/channel/UCtGxYy5w2GZv9O5o0tBbVdA'
+                            target='_blank'
+                        >
+                            <Youtube
+                                size={25}
+                                className='cursor-pointer hover:text-teal-600'
+                            />
+                        </Link>
+
+                        <Link
+                            href='https://www.instagram.com/ahdcameroon/'
+                            target='_blank'
+                        >
+                            {' '}
+                            <Instagram
+                                size={25}
+                                className='cursor-pointer hover:text-teal-600'
+                            />
+                        </Link>
+                        <Link
+                            href='https://x.com/ahdcameroon'
+                            target='_blank'
+                            className='cursor-pointer hover:text-teal-600'
+                        >
+                            {' '}
+                            <X
+                                size={32}
+                                className='cursor-pointer hover:text-teal-600'
+                            />
+                        </Link>
+                        {/* <Facebook
                             size={32}
                             className='bg-gray-700 rounded-full p-2 '
-                        />
+                        /> */}
                         {/* <Twitter
                             size={32}
                             className='bg-gray-700 rounded-full p-2 '
                         /> */}
-                        <Instagram
-                            size={32}
-                            className='bg-gray-700 rounded-full p-2 '
-                        />
                     </div>
                 </div>
             </div>
@@ -133,13 +183,16 @@ const OurStories = () => {
                     {/* Right Section - Buttons */}
                     <div className='flex space-x-4 '>
                         <a
-                            href='#donation'
-                            className='text-gray-500 hover:text-gray-700 underline'
+                            href='/donation'
+                            className='text-pink-950 hover:text-green-700 underline'
+                            target='_blank'
                         >
                             Make a donation
                         </a>
-                        <button className='bg-gray-700 text-white md:p-3 p-1 rounded-full hover:bg-gray-800 transition duration-300'>
-                            Become a volunteer
+                        <button className='bg-green-700 text-white md:p-3 p-1 rounded-full hover:bg-purple-800 transition duration-300'>
+                            <Link href='/signup'>
+                                <span className='font-bold'>Get Involved</span>
+                            </Link>
                         </button>
                     </div>
                     <div className='absolute md:w-32 w-16 md:h-32 h-16 bg-cyan-600 rounded-full border-b-8 border-gray-500  skew-x-6 md:-top-12 -top-6 right-1/2'></div>

@@ -10,22 +10,22 @@ import {homeCarousel} from '@/lib/data';
 
 const Slider = () => {
     return (
-        <div className='relative h-[600px] w-full'>
+        <div className='relative h-[600px] w-full '>
             <Carousel
                 autoPlay
                 infiniteLoop
                 showArrows={true}
                 showStatus={true}
-                className='w-full'
+                className='w-full h-full'
             >
                 {homeCarousel?.map((item, index: number) => (
-                    <div key={index} className='h-[600px]'>
+                    <div key={index} className='h-[600px] '>
                         <Image
                             src={item.img}
                             alt={item.title}
                             className='h-full w-full object-cover'
-                            width={1000}
-                            height={1000}
+                            width={800}
+                            height={800}
                         />
                     </div>
                 ))}

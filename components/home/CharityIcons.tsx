@@ -22,6 +22,8 @@ const CharityIcons = () => {
                             width={100}
                             height={100}
                         />
+                        <span className='text-2xl'>Become a</span>
+                        <strong>Volunteer</strong>
                     </div>
                 ))}
             </div>
