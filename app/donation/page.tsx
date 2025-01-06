@@ -21,11 +21,41 @@ const DonationPage = () => {
     const [priceType, setPriceType] = useState(array[0]);
     const [selectAmount, setSelectAmount] = useState(0);
 
+    // const handlePayment = async () => {
+    //     const response = await paymentMethod(selectAmount);
+    //     if (response?.error) {
+    //         toast.error(response.error);
+    //     } else router.push(response);
+    // };
+    // const handlePayment = async () => {
+    //     const response = await paymentMethod(selectAmount);
+
+    //     if (typeof response === 'object' && 'error' in response) {
+    //         // Handle error response
+    //         toast.error(response.error);
+    //     } else if (typeof response === 'string') {
+    //         // Handle successful response (URL)
+    //         router.push(response);
+    //     } else {
+    //         // Handle unexpected cases (optional)
+    //         console.error('Unexpected response:', response);
+    //     }
+    // };
     const handlePayment = async () => {
         const response = await paymentMethod(selectAmount);
-        if (response?.error) {
+
+        if (response === null) {
+            console.error('Payment method returned null');
+            return;
+        }
+
+        if (typeof response === 'object' && 'error' in response) {
             toast.error(response.error);
-        } else router.push(response);
+        } else if (typeof response === 'string') {
+            router.push(response);
+        } else {
+            console.error('Unexpected response:', response);
+        }
     };
 
     return (
