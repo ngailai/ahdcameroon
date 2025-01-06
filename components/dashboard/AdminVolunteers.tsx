@@ -5,7 +5,6 @@ import React from 'react';
 
 import {
     Button,
-    Image,
     Input,
     Pagination,
     Table,
@@ -51,7 +50,7 @@ export default function AdminVolunteers({volunteers}: {volunteers: User[]}) {
         }
 
         return filteredVolunteers;
-    }, [volunteers, filterValue]);
+    }, [volunteers, hasSearchFilter, filterValue]);
 
     const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -149,7 +148,7 @@ export default function AdminVolunteers({volunteers}: {volunteers: User[]}) {
                 </div>
             </div>
         );
-    }, [filterValue, volunteers.length, onSearchChange, hasSearchFilter]);
+    }, [filterValue, onSearchChange, onClear]);
 
     const bottomContent = React.useMemo(() => {
         return (
@@ -188,7 +187,14 @@ export default function AdminVolunteers({volunteers}: {volunteers: User[]}) {
                 </div>
             </div>
         );
-    }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
+    }, [
+        selectedKeys,
+        filteredItems.length,
+        page,
+        pages,
+        onPreviousPage,
+        onNextPage,
+    ]);
 
     return (
         <Table

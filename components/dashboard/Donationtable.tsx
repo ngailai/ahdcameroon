@@ -22,7 +22,6 @@ const columns = [
 ];
 
 export default function Donationtable({donations}: {donations: Donation[]}) {
-    const [filterValue, setFilterValue] = React.useState('');
     const [selectedKeys, setSelectedKeys] = React.useState<Set<any>>(
         new Set([]),
     );
@@ -36,7 +35,6 @@ export default function Donationtable({donations}: {donations: Donation[]}) {
     const rowsPerPage = 5;
     const [page, setPage] = React.useState(1);
 
-    const hasSearchFilter = Boolean(filterValue);
     const pages = Math.ceil(donations.length / rowsPerPage);
 
     const items = React.useMemo(() => {
@@ -102,20 +100,6 @@ export default function Donationtable({donations}: {donations: Donation[]}) {
             setPage(page - 1);
         }
     }, [page]);
-
-    const onSearchChange = React.useCallback((value: string) => {
-        if (value) {
-            setFilterValue(value);
-            setPage(1);
-        } else {
-            setFilterValue('');
-        }
-    }, []);
-
-    const onClear = React.useCallback(() => {
-        setFilterValue('');
-        setPage(1);
-    }, []);
 
     const bottomContent = React.useMemo(() => {
         return (

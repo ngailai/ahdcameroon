@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 
+import Stripe from 'stripe';
+
 import {getAuthSession} from './auth';
 import {db} from './db';
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+    apiVersion: '2024-12-18.acacia', // Ensure the correct Stripe API version
+});
 
 export const paymentMethod = async (price: number) => {
     const sessionDetails: any = await getAuthSession();
@@ -41,5 +44,8 @@ export const paymentMethod = async (price: number) => {
         });
 
         if (session) return session.url;
-    } catch (error) {}
+    } catch (error) {
+        console.error('An unknown error occurred:', error);
+        return {error: 'Something went wrong while processing your payment'};
+    }
 };
